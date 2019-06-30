@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Git for beginners</title>
+		<link href='img/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/serif.css">
+		<link rel="stylesheet" href="css/theme/custom-theme.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<img
+						src="img/git-logo.svg"
+						class="no-shadow"
+						width="90%"
+						alt="Git logo"
+					/>
+					<h1><span class="vhide">Git</span> for beginners</h1>
+				</section>
+
+				<section>
+					<h2>What we're not going to do</h2>
+					<img
+						src="img/memorizing-six-git-commands.jpg"
+						alt="Fake book cover from twitter.com/ThePracticalDev: Memorizing 6 Git commands - A Practical Guide"
+						width="43%"
+					/>
+				</section>
+
+				<section>
+					<h2>Git is CLI</h2>
+					<p>Command line interface</p>
+				</section>
+
+				<section class="terminal-basics">
+					<section>
+						<h2>Terminal basics</h2>
+					</section>
+
+					<section>
+						<h2>The basics of basic</h2>
+						<p>What does this screen mean?</p>
+						<img src="img/terminal-window.png" alt="Terminal window in home folder" />
+						<aside class="notes">
+							<ol>
+								<li>C02RH0ZMG8WM: Name of the machine that you're working (In this case it’s my notebook but it could be a KVM, for example if you SSH to one.)</li>
+								<li>"~": Folder that you are at this moment ("~" is an alias for your user folder);</li>
+								<li>iramosjunir: User that is logged in to this session;</li>
+							</ol>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Where am I?</h2>
+						<pre><code class="shell" data-trim>
+							$ pwd
+						</code></pre>
+						<img src="img/terminal-pwd.png" alt="pwd command output" />
+						<aside class="notes">
+							<p>$ pwd stands for “Print working directory"</p>
+							<p>It will show you in witch folder you are right now.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>What do I have here?</h2>
+						<pre><code class="shell" data-trim>
+							$ ls
+						</code></pre>
+						<img src="img/terminal-ls.png" alt="ls command output" />
+						<aside class="notes">
+							<p>$ ls is an abreviation of "list".</p>
+							<p>It will list existent files and directories in the folder that you are currently in.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>What do I have here?</h2>
+						<pre><code class="shell" data-trim>
+							$ ls -1
+						</code></pre>
+						<img src="img/terminal-ls-1.png" alt="ls -1 command output" />
+						<aside class="notes">
+							<p>By using the argument “-1” in combination with the command “ls" will list files vertically. This is just a different way to see the same information.</p>
+							<p>There are a lot of different arguments that you can use if you want to visualize it in different ways.</p>
+							<p>If you use “ls -la“ for example, it will bring you the same list with more detailed information for each file/folder.</p>
+							<p>More info: <a href="https://explainshell.com/explain/1/ls">https://explainshell.com/explain/1/ls</a></p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Clear the view</h2>
+						<pre><code class="shell" data-trim>
+							$ clear
+						</code></pre>
+						<img src="img/terminal-window.png" alt="clear command output" />
+						<aside class="notes">
+							<p>The “clear" command will clear the view of your bash window.</p>
+							<p>Be notice that it not erase the previous information. If you scroll up, all history still there.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Change directory</h2>
+						<pre><code class="shell" data-trim>
+							$ cd folder_name
+						</code></pre>
+						<img src="img/terminal-cd.png" alt="cd command output" />
+						<aside class="notes">
+							<p>$ cd stands for “Change directory”.</p>
+							<p>Notice that the folder that you intend to navigate in, need to be inside of the actual fonder. To see a list all available folders to navigate you can hit TAB two times after type “cd"</p>
+							<p>Be aware that you can  also specify a path of folders. For example: $cd Developer/booking/main</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>A step back</h2>
+						<pre><code class="shell" data-trim>
+							$ cd ..
+						</code></pre>
+						<img src="img/terminal-cd-dotdot.png" alt="cd .. command output" />
+						<aside class="notes">
+							<p>In order to navigate back in the tree you can use “..”. It will make you return one level in the folder tree.</p>
+							<p>You can also go back more levels at once: $ cd ../../ </p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Make a directory</h2>
+						<pre><code class="shell" data-trim>
+							$ mkdir folder_name
+						</code></pre>
+						<img src="img/terminal-mkdir.png" alt="mkdir command output" />
+						<aside class="notes">
+							<p>$ mkdir  stands for Make directory.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Create a file</h2>
+						<pre><code class="shell" data-trim>
+							$ touch file_name.txt
+						</code></pre>
+						<img src="img/terminal-touch.png" alt="touch command output" />
+						<aside class="notes">
+							<p>$ touch followed by a name + extension will create a empty file of that specific kind.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Open a file</h2>
+						<p>Mac</p>
+						<pre><code class="shell" data-trim>
+							$ open file_name.txt
+						</code></pre>
+						<img src="img/terminal-open.png" alt="open command output" />
+						<aside class="notes">
+							<p>$ open followed by a name + extension will open that file using the default editor for that kind of file on Mac OS X.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Open a file</h2>
+						<p>Linux</p>
+						<pre><code class="shell" data-trim>
+							$ xdg-open file_name.txt
+						</code></pre>
+						<img src="img/xterm-xdg-open.png" alt="xdg-open command output" />
+						<aside class="notes">
+							<p>$ xdg-open followed by a name + extension will open that file using the default editor for that kind of file on Linux.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Open a file</h2>
+						<p>Windows</p>
+						<pre><code class="shell" data-trim>
+							$ start file_name.txt
+						</code></pre>
+						<img src="img/cmd-start.png" alt="start command output in windows CMD" />
+						<aside class="notes">
+							<p>If you’re using windows, use $ start file_name.extension</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Quick Review</h2>
+						<ul>
+							<li class="fragment"><span class="inline-code">$ pwd</span> Print the working directory</li>
+							<li class="fragment"><span class="inline-code">$ ls</span> List directories</li>
+							<li class="fragment"><span class="inline-code">$ cd folder_name</span> Change to a named folder</li>
+							<li class="fragment"><span class="inline-code">$ clear</span> Clear the view</li>
+							<li class="fragment"><span class="inline-code">$ mkdir folder_name</span> Creates a new folder</li>
+							<li class="fragment"><span class="inline-code">$ touch file_name</span> Creates a new file</li>
+							<li class="fragment"><span class="inline-code">$ open file_name</span> Open the named file</li>
+						</ul>
+					</section>
+				</section><!-- End .terminal-basics -->
+
+				<section class="explaning-git">
+					<section>
+						<h3 class="align-left">A brief explanation about</h3>
+						<img
+							src="img/git-logo.svg"
+							class="no-shadow"
+							width="90%"
+							alt="Git logo"
+						/>
+					</section>
+
+					<section>
+						<h3>Git is a <strong>distributed</strong> versioning control system.</h3>
+					</section>
+
+					<section>
+						<h2>Distributed system</h2>
+						<div class="distributed-diagram">
+							<div class="remote-git-server">
+								<p>Git Server</p>
+								<img
+									src="img/server.svg"
+									class="no-shadow"
+									width="15%"
+									alt="Icon of a computer server"
+								/>
+							</div><!-- End .remote-git-server -->
+							<div class="local-machine">
+								<img
+									src="img/macbook.svg"
+									class="no-shadow fragment"
+									data-fragment-index="0"
+									alt="Icon of user local machine"
+								/>
+								<img
+									src="img/server.svg"
+									class="local-server no-shadow fragment"
+									data-fragment-index="3"
+									alt="Icon of local git server"
+								/>
+							</div><!-- End .local-machine -->
+							<div class="local-machine">
+								<img
+									src="img/macbook.svg"
+									class="no-shadow fragment"
+									data-fragment-index="1"
+									alt="Icon of user local machine"
+								/>
+								<img
+									src="img/server.svg"
+									class="local-server no-shadow fragment"
+									data-fragment-index="3"
+									alt="Icon of local git server"
+								/>
+							</div><!-- End .local-machine -->
+							<div class="local-machine">
+								<img
+									src="img/macbook.svg"
+									class="no-shadow fragment"
+									data-fragment-index="2"
+									alt="Icon of user local machine"
+								/>
+								<img
+									src="img/server.svg"
+									class="local-server no-shadow fragment"
+									data-fragment-index="3"
+									alt="Icon of local git server"
+								/>
+							</div><!-- End .local-machine -->
+						</div><!-- End .distributed-diagram -->
+						<aside class="notes">
+							<p>In a distributed version control system you can work in a bunch of iteration locally, and sync all at once, whenever you have access to the server.</p>
+							<p>Not distributed systems demand connection to the serve in order to generate history. It means that if you don't have network connection, you're unable to send changes to the code base.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Git is a diary</h2>
+						<img
+							src="img/diary.svg"
+							class="no-shadow"
+							width="40%"
+							alt="Icon: Diary"
+						/>
+						<aside class="notes">
+							<p>Git register changes in the project over time.</p>
+							<ul>
+								<li>It stores what, who, when and why a change was made based in the information of each commit.</li>
+								<li>It allows you to review those changes and provide mechanisms to undo them if you need.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h2>It's also a time machine</h2>
+						<img
+							src="img/delorean.svg"
+							class="no-shadow"
+							width="80%"
+							alt="Icon: Delorean from back to the future"
+						/>
+						<aside class="notes">
+							<p>When something breaks git allow us to go back to a previous state</p>
+							<p>Git is part of our deployment and it allow us to rollback fast in case there’s any problems.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Do I have git?</h2>
+						<pre><code class="shell" data-trim>
+							$ git --version
+						</code></pre>
+						<img src="img/terminal-git-version.png" alt="git --version command output" />
+						<aside class="notes">
+							<p>If your version is older than v2.15 you should update it.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Installing git</h2>
+						<p><a href="https://git-scm.com">https://git-scm.com</a></p>
+						<img src="img/browser-git-site.png" alt="Screenshot from git-scm.com website" />
+					</section>
+				</section><!-- End .explaning-git -->
+
+				<section class="setting-up-things">
+					<section>
+						<h2>Clone repository</h2>
+						<pre><code class="shell" data-trim>
+							$ cd ~/Developer
+							$ git clone https://github.com/idmarjr/beginners-training.git
+							$ cd git-training
+						</code></pre>
+						<aside class="notes">
+							<p>Git clone will make a copy of the remote repository to your local computer.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Set your configuration</h2>
+						<div>
+							<p>Name and email</p>
+							<pre><code class="shell" data-trim>
+								$ git config --global user.name "Your name here"
+								$ git config --global user.email your@email.com
+							</code></pre>
+						</div>
+						<div class="fragment">
+							<p>Colors</p>
+							<pre><code class="shell" data-trim>
+								$ git config --global color.ui auto
+							</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<h2>Review your config</h2>
+						<pre><code class="shell" data-trim>
+							$ git config --list
+						</code></pre>
+						<img src="img/terminal-git-config-list.png" alt="git config --list command output" />
+					</section>
+				</section><!-- End .setting-up-things -->
+
+				<section class="git-flow">
+					<section>
+						<img
+							src="img/git-logo.svg"
+							class="no-shadow"
+							width="90%"
+							alt="Git logo"
+						/>
+						<h3 class="align-left">workflow</h3>
+					</section>
+
+					<section>
+						<h2>How's my local copy?</h2>
+						<pre><code class="shell" data-trim>
+							$ git status
+						</code></pre>
+						<img src="img/terminal-git-status.png" alt="git status command output: Clear repository copy" />
+					</section>
+
+					<section>
+						<h2>Time to work a bit</h2>
+						<ol>
+							<li>Open your repository</li>
+							<li>Go to folder <span class="inline-code">2019/YYYY-MM-DD-training</span></li>
+							<li>Open <span class="inline-code">yourname.md</span></li>
+							<li>Add the follow information about you:</li>
+						</ol>
+						<pre><code class="markdown" data-trim>
+							# About me
+
+							## Favorite animal:
+
+							## Favorite color:
+
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Working copy status</h2>
+						<pre><code class="shell" data-trim>
+							$ git status
+						</code></pre>
+						<img src="img/terminal-git-status-1.png" alt="git status command output: File with change in the working tree" />
+					</section>
+
+					<section>
+						<h2>What did I change?</h2>
+						<pre><code class="shell" data-trim>
+							$ git diff
+						</code></pre>
+						<img src="img/terminal-git-diff.png" alt="git diff command output when a file in working tree have changes" />
+					</section>
+
+					<section>
+						<div>
+							<h2>Add a file to staging area</h2>
+							<pre><code class="shell" data-trim>
+								$ git add readme.md
+							</code></pre>
+						</div>
+						<div class="fragment">
+							<h2>Add all modifed files</h2>
+							<pre><code class="shell" data-trim>
+								$ git add .
+							</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<h2>Working copy status</h2>
+						<pre><code class="shell" data-trim>
+							$ git status
+						</code></pre>
+						<img src="img/terminal-git-status-2.png" alt="git status command output: File added to stage area" />
+					</section>
+
+					<section>
+						<h2>Let's work a bit more</h2>
+						<ol>
+							<li>Add the following information to your_name.md</li>
+						</ol>
+						<pre><code class="markdown" data-trim>
+							## Favorite place:
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Working copy status</h2>
+						<pre><code class="shell" data-trim>
+							$ git status
+						</code></pre>
+						<img src="img/terminal-git-status-3.png" alt="git status command output: Same file with staged and unstaged changes" />
+					</section>
+
+					<section>
+						<h2>Discard changes</h2>
+						<div>
+							<p>Individual file</p>
+							<pre><code class="shell" data-trim>
+								$ git checkout readme.md
+							</code></pre>
+						</div>
+						<div class="fragment">
+							<p>All files</p>
+							<pre><code class="shell" data-trim>
+								$ git checkout .
+							</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<h2>Working copy status</h2>
+						<pre><code class="shell" data-trim>
+							$ git status
+						</code></pre>
+						<img src="img/terminal-git-status-2.png" alt="git status command output: File added to stage area" />
+					</section>
+
+					<section>
+						<h2>Unstage changes</h2>
+						<pre><code class="shell" data-trim>
+							$ git reset readme.md
+						</code></pre>
+						<img src="img/terminal-git-reset.png" alt="git reset command output" />
+					</section>
+
+					<section>
+						<h2>Working copy status</h2>
+						<pre><code class="shell" data-trim>
+							$ git status
+						</code></pre>
+						<img src="img/terminal-git-status-1.png" alt="git status command output: File with change in the working tree" />
+					</section>
+
+					<section>
+						<h2>Commit changes</h2>
+						<div>
+							<p>The right way</p>
+							<pre><code class="shell" data-trim>
+								$ git commit
+							</code></pre>
+						</div>
+						<div class="fragment">
+							<p>The quick way</p>
+							<pre><code class="shell" data-trim>
+								$ git commit -m "Explain what you're changing"
+							</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<h2>Change default editor</h2>
+						<p>Atom</p>
+						<pre><code class="shell" data-trim>
+							$ git config --global core.editor "atom -n -w”
+						</code></pre>
+						<p>Sublime</p>
+						<pre><code class="shell" data-trim>
+							$ git config --global core.editor "subl -n -w”
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Editing commit message</h2>
+						<p></p>
+						<img src="img/sublime-commit-message-template.png" alt="Sublime text editor window with COMMIT_EDITMSG file open" />
+					</section>
+
+					<section>
+						<h2>Working copy status</h2>
+						<pre><code class="shell" data-trim>
+							$ git status
+						</code></pre>
+						<img src="img/terminal-git-status-4.png" alt="git status command output: Branch with one local commit" />
+					</section>
+
+					<section>
+						<h2>Before <span class="inline-code">push</span>, first <span class="inline-code">pull</span></h2>
+						<pre><code class="shell" data-trim>
+							$ git pull
+						</code></pre>
+						<img src="img/terminal-git-pull.png" alt="git pull command output" />
+					</section>
+
+					<section>
+						<h2><span class="inline-code">push</span> changes to origin</h2>
+						<pre><code class="shell" data-trim>
+							$ git push
+						</code></pre>
+						<img src="img/terminal-git-push.png" alt="git push command output" />
+					</section>
+				</section><!-- End .git-flow -->
+
+				<section class="git-finding-information">
+					<section>
+						<h2>Exploring logs</h2>
+						<pre><code class="shell" data-trim>
+							$ git log
+						</code></pre>
+						<img src="img/terminal-git-log.png" alt="git log command output" />
+					</section>
+
+					<section>
+						<h2>A small detail</h2>
+						<p>Type <span class="inline-code">q</span> to exit <span class="inline-code">git log</span> view</p>
+						<img
+							src="img/terminal-vi-detail.png"
+							class="no-shadow"
+							alt="git log command output"
+						/>
+					</section>
+
+					<section>
+						<h2>Log options (How)</h2>
+						<pre><code class="shell" data-trim>
+							$ git log --oneline
+						</code></pre>
+						<pre class="fragment"><code class="shell" data-trim>
+							$ git log --no-decorate
+						</code></pre>
+						<pre class="fragment"><code class="shell" data-trim>
+							$ git log --graph
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Log options (What)</h2>
+						<pre><code class="shell" data-trim>
+							$ git log --reverse
+						</code></pre>
+						<pre class="fragment"><code class="shell" data-trim>
+							$ git log --author=pedro.marques
+						</code></pre>
+						<pre class="fragment"><code class="shell" data-trim>
+							$ git log --since=yesterday
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Multiple log options</h2>
+						<pre><code class="shell" data-trim>
+							$ git log --oneline --graph --author=pedro.marques
+						</code></pre>
+						<p><a href="https://git-scm.com/docs/git-log" target="_blank">Read more about <span class="inline-code">git log</span></a></p>
+					</section>
+
+					<section>
+						<h2>Details of a commit</h2>
+						<pre><code class="shell" data-trim>
+							$ git show [SHA]
+						</code></pre>
+						<img src="img/terminal-git-show.png" alt="git show command output" />
+					</section>
+				</section><!-- End .git-finding-information -->
+
+				<!-- class="fragment"
+				data-fragment-index="3" -->
+
+				<section>
+
+					<section>
+						<h2>Recap</h2>
+					</section>
+
+					<section>
+						<div class="abstract-diagram">
+							<div class="machine local">
+								<p class="fragment" data-fragment-index="7">Your local computer</p>
+
+								<div class="step working-tree fragment" data-fragment-index="0">Working Tree</div>
+								<div class="git-command">
+									<i class="fragment" data-fragment-index="1">↓</i>
+									<span class="fragment" data-fragment-index="3">git add</span>
+								</div>
+
+								<div class="step staging-area fragment" data-fragment-index="2">Staging area</div>
+								<div class="git-command">
+									<i class="fragment" data-fragment-index="4">↓</i>
+									<span class="fragment" data-fragment-index="6">git commit</span>
+								</div>
+
+								<div class="step local-git fragment" data-fragment-index="5">Local Commit</div>
+							</div>
+
+							<div class="git-command">
+								<i class="fragment" data-fragment-index="8">↓</i>
+								<span class="fragment" data-fragment-index="10">git push</span>
+							</div>
+
+							<div class="machine remote">
+								<p class="fragment" data-fragment-index="11">Remote server</p>
+								<div class="step remote-repo fragment" data-fragment-index="9">Remote repository</div>
+							</div>
+						</div><!-- End .abstract-diagram -->
+					</section>
+				</section>
+
+				<section>
+					<h2>Questions?</h2>
+					<p>and then</p>
+					<h2>a few more things</h2>
+				</section>
+
+				<section class="git-conflict">
+					<section>
+						<h2>Conflicts</h2>
+						<img
+							src="img/calvin-conflict.png"
+							class="no-shadow"
+							alt="Susie and Calvin from Calvin & Hobbes fighting"
+						/>
+					</section>
+
+					<section>
+						<h2>Anatomy of a git conflict</h2>
+						<img src="img/sublime-conflict-example.png" alt="Preview of a git conflict" />
+					</section>
+				</section><!-- End .git-conflict -->
+
+				<section>
+					<h2>Git LFS</h2>
+					<p><a href="https://git-lfs.github.com/" target="black">git-lfs.github.com</a></p>
+					<img src="img/browser-git-lfs-site.png" alt="Screenshot of git-lfs.github.com website" />
+				</section>
+
+				<section>
+					<h2>Questions?</h2>
+					<p>One more time.</p>
+				</section>
+
+				<section data-background="img/thats-all-folks.jpg" data-background-transition="zoom">
+					<h2 class="vhide">That's all folks!</h2>
+				</section>
+
+				<section>
+					<h3>Credits</h3>
+					<ul>
+						<li>Icons from <a href="https://thenounproject.com/" target="_blank">The Noun Project</a></li>
+						<li><a href="https://thenounproject.com/aaron.humphreys1/uploads/?i=229014" target="_blank">DeLorean icon</a> created by <a href="https://thenounproject.com/aaron.humphreys1/" target="_blank">Aaron Humphreys</a></li>
+						<li><a href="https://thenounproject.com/Pause08/uploads/?i=1531325" target="_blank">Diary icon</a> created by <a href="https://thenounproject.com/Pause08/" target="_blank">Notachai Plukjaisuea </a></li>
+						<li><a href="https://thenounproject.com/rshashank19/uploads/?i=465188" target="_blank">Macbook icon</a> created by <a href="https://thenounproject.com/rshashank19" target="_blank">Shashank Singh</a></li>
+						<li><a href="https://thenounproject.com/zirconicusso/uploads/?i=1500133" target="_blank">Server icon</a> created by <a href="https://thenounproject.com/zirconicusso" target="_blank">Petai Jantrapoon</a></li>
+						<li>Terminal screenshots made using <a href="https://hyper.is/" target="_blank">Hyper™</a></li>
+						<li><em>That's all folks</em> image from <a href="https://www.warnerbros.com/" target="_blank">Looney Tunes</a> by <a href="https://www.warnerbros.com/" target="_blank">Warner Bros.</a></li>
+						<li><em>Conflicts</em> illustration from <a href="http://www.calvinandhobbes.com/" target="_blank">Calvin and Hobbes</a> by <a href="https://en.wikipedia.org/wiki/Bill_Watterson" target="_blank">Bill Watterson</a></li>
+					</ul>
+				</section>
+
+			</div><!-- End .slides -->
+		</div><!-- End .reveal -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				history: true,
+				progress: true,
+				//transition: 'none',
+
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+
+	</body>
+</html>

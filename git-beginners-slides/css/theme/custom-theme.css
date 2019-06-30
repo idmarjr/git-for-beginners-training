@@ -1,0 +1,127 @@
+/******************************************************************************/
+/* General customizations */
+/******************************************************************************/
+.reveal {
+    font-size: 35px;
+}
+
+.reveal section a {
+    text-decoration: underline;
+}
+
+.reveal section img {
+    max-width: 100%;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0, 0.4);
+}
+
+/******************************************************************************/
+/* Code preview customizations */
+/******************************************************************************/
+.reveal section pre {
+    width: 100%;
+}
+
+.reveal section pre code {
+    padding: 1.5em;
+    font-size: 20px;
+    line-height: 1.2em;
+}
+
+.reveal section .inline-code {
+    font-family: monospace;
+    padding: 4px 15px 3px;
+    border-radius: 3px;
+    color: #fff;
+    background-color: rgba(63, 63, 63, 1);
+}
+
+/******************************************************************************/
+/* .distributed-diagram */
+/******************************************************************************/
+.distributed-diagram .remote-git-server > p  {
+    margin: 0;
+}
+
+.distributed-diagram .local-machine {
+    position: relative;
+    width: 25%;
+    float: left;
+    margin: 0 4.1%;
+}
+
+.distributed-diagram .local-machine .local-server {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -90%);
+}
+
+/******************************************************************************/
+/* .abstract-diagram */
+/******************************************************************************/
+.abstract-diagram .machine {
+    position: relative;
+    border: 2px solid #383838;
+    padding: 1.1em 0.5em 0.5em 0.5em;
+}
+
+.abstract-diagram .machine p {
+    position: absolute;
+    top: 0.5em;
+    left: 0.5em;
+    margin: 0;
+    text-align: left;
+    font-size: 0.5em;
+}
+
+.abstract-diagram .step {
+    padding: 0.5em;
+}
+
+.abstract-diagram .step.working-tree,
+.abstract-diagram .step.staging-area,
+.abstract-diagram .step.local-git,
+.abstract-diagram .step.remote-repo {
+    font-size: 0.8em;
+    color: #fff;
+}
+
+.abstract-diagram .git-command {
+    color: #383838;
+    width: 50%;
+}
+
+.abstract-diagram .git-command > span {
+    display: inline-block;
+    position: relative;
+    top: -8px;
+    border-radius: 2px;
+    font-size: 0.5em;
+    font-family: monospace;
+}
+
+.abstract-diagram .step.working-tree {background-color: #ea5e5b;}
+.abstract-diagram .step.staging-area {background-color: #72be49;}
+.abstract-diagram .step.local-git    {background-color: #56a9f6;}
+.abstract-diagram .step.remote-repo  {background-color: #b26edf;}
+
+/******************************************************************************/
+/* Utility classes */
+/******************************************************************************/
+.reveal section .vhide {
+    display: block;
+    position: fixed;
+    top: -1px;
+    left: -1px;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.reveal section .no-shadow {box-shadow: none;}
+
+.reveal section .align-left {text-align: left;}
+.reveal section .align-center {text-align: center;}
+.reveal section .align-justify {text-align: justify;}
+.reveal section .align-right {text-align: right;}
